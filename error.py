@@ -16,11 +16,11 @@ sample = "{" \
          "\n'error': 10," \
          "\n}"
 try:
-    with open("conf.txt.0") as conf:
+    with open("conf.txt") as conf:
         contents = conf.read()
         contents = eval(contents)
 except FileNotFoundError:
-    with open("conf.txt.0", 'a') as conf:
+    with open("conf.txt", 'a') as conf:
         conf.write(str(sample))
     with open("readme.txt",'a') as conf:
         conf.write(str("目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）\n"
