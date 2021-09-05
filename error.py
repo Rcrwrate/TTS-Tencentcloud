@@ -16,11 +16,11 @@ sample = "{" \
          "\n'error': 10," \
          "\n}"
 try:
-    with open("conf.txt") as conf:
+    with open("conf.txt.0") as conf:
         contents = conf.read()
         contents = eval(contents)
 except FileNotFoundError:
-    with open("conf.txt",'a') as conf:
+    with open("conf.txt.0", 'a') as conf:
         conf.write(str(sample))
     with open("readme.txt",'a') as conf:
         conf.write(str("目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）\n"
@@ -31,6 +31,10 @@ except FileNotFoundError:
                        "suffix指代文件名后缀\n"
                        "start指文件名中数字变动区域的起驶数字end反之\n"
                        "error指单次查询能够容忍的错误上限\n\n"
+                       "程序说明：\n"
+                       "music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log\n"
+                       "第一个是输出，第二个是全过程（不完全），第三个是错误列表\n"
+                       "error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中\n\n"
                        "举例说明：\n"
                        "https://github.com/Rcrwrate/H/name_00001.wav.wav到https://github.com/Rcrwrate/H/name_02345.wav.wav\n"
                        "这是我的音频文件（已经上传到公网能够访问的地方）\n"
