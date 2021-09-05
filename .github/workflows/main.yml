@@ -34,8 +34,8 @@ jobs:
         pip install pyinstaller
     - name: pyinstaller
       run: |
-        pyinstaller -F -i=favicon.ico music.py -n=music.exe
-        pyinstaller -F -i=favicon.ico error.py -n=error.exe
+        pyinstaller -F -i=favicon.ico music.py -n=music
+        pyinstaller -F -i=favicon.ico error.py -n=error
         
 #    - name: Commit and push
 #      run: bash reset.sh "update app config"
