@@ -3,7 +3,14 @@
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
-软件下载：提供[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/releases) [ubuntu](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist)
+软件下载：[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/releases) // [ubuntu](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist)
+
+### 程序说明：
+music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log
+
+第一个是输出，第二个是全过程（不完全），第三个是错误列表
+
+error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中
 
 ### 相关说明：
 SecretID/KEY可通过[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)获取，注意主账号需要开通[语音识别](https://console.cloud.tencent.com/asr)的功能
