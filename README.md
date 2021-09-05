@@ -3,6 +3,8 @@
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
+软件下载：仅提供windows版本
+
 ### 相关说明：
 SecretID/KEY可通过[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)获取，注意主账号需要开通[语音识别](https://console.cloud.tencent.com/asr)的功能
 
