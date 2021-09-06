@@ -63,6 +63,8 @@ except FileNotFoundError:
     print("文件conf.txt不存在,已自动生成模板文件，请按照标准填写完成后再次运行本程序")
     print("请仔细阅读说明文档：readme.txt")
     input("按回车键退出")
+except SyntaxError:
+    input("conf.txt文件异常，删除或者修正\n按回车键退出")
 else:
     i = int(input("请输入URL中的ID:"))
     if i < 10:

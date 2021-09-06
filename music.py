@@ -44,7 +44,8 @@ except FileNotFoundError:
                        "程序说明：\n"
                        "music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log\n"
                        "第一个是输出，第二个是全过程（不完全），第三个是错误列表\n"
-                       "error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中\n\n"
+                       "error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中\n"
+                       "once.py是单个处理文件，用于单独处理\n\n"
                        "举例说明：\n"
                        "https://github.com/Rcrwrate/H/name_00001.wav.wav到https://github.com/Rcrwrate/H/name_02345.wav.wav\n"
                        "这是我的音频文件（已经上传到公网能够访问的地方）\n"
@@ -57,10 +58,13 @@ except FileNotFoundError:
                        "\t'start': 1,\n"
                        "\t'end': 2345,\n"
                        "\t'error':10,\n"
-                       "}\n"))
+                       "}\n\n"
+                       "更多说明请前往https://github.com/Rcrwrate/TTS-Tencentcloud/wiki\n"))
     print("文件conf.txt不存在,已自动生成模板文件，请按照标准填写完成后再次运行本程序")
     print("请仔细阅读说明文档：readme.txt")
     input("按回车键退出")
+except SyntaxError:
+    input("conf.txt文件异常，删除或者修正\n按回车键退出")
 else:
     for i in range(contents["start"], contents["end"]):
         cent = (i - contents["start"] + 1) // ((contents["end"] - contents["start"]) // 100)
