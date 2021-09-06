@@ -2,6 +2,7 @@
 ## [![ALL](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml/badge.svg)](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml)[项目开源地址](https://github.com/Rcrwrate/TTS-Tencentcloud/)
 
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
+### 本程序自用+练练手（有问题在issues里问，能解答我就解答，毕竟我也是彩笔，一个actions弄了我老半天，绝了
 ## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
 软件下载：
