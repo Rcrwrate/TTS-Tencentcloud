@@ -36,6 +36,7 @@ jobs:
       run: |
         pyinstaller -F -i=favicon.ico music.py -n=music
         pyinstaller -F -i=favicon.ico error.py -n=error
+        pyinstaller -F -i=favicon.ico once.py -n=once
         
 #    - name: Commit and push
 #      run: bash reset.sh "update app config"
