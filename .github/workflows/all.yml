@@ -17,7 +17,7 @@ on:
     
 jobs:
   build-win:
-  #  needs: build-ubuntu
+    needs: build-ubuntu
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +35,9 @@ jobs:
         pip install pypiwin32
         pip install pyinstaller
         rm -r -Force dist
+        git config --global user.email rurburner@gmail.com
+        git config --global user.name Rcrwrate
+        git pull origin main
     - name: pyinstaller
       run: |
         pyinstaller -F -i ./favicon.ico music.py
