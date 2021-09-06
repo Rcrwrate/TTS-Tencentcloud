@@ -21,7 +21,7 @@ error.py是错误处理文件，目前需要您手动输入错误列表中的tas
 
 once.py是单个处理文件，用于单独处理
 
-### 相关说明：
+### Conf.txt相关说明：
 SecretID/KEY可通过[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)获取，注意主账号需要开通[语音识别](https://console.cloud.tencent.com/asr)的功能
 
 Url指基础除了数字变动区域以及后缀名以外的全部内容
