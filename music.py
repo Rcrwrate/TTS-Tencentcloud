@@ -66,8 +66,8 @@ except FileNotFoundError:
 except SyntaxError:
     input("conf.txt文件异常，删除或者修正\n按回车键退出")
 else:
-    for i in range(contents["start"], contents["end"]):
-        cent = (i - contents["start"] + 1) // ((contents["end"] - contents["start"]) // 100)
+    for i in range(contents["start"], contents["end"]+1):
+        cent = int((float(i) - float(contents["start"]) + 1) / (float(contents["end"]) - float(contents["start"])) * 100 )
         if i < 10:
             i = "0000" + str(i)
         elif 10 <= i and i < 100:
@@ -77,7 +77,7 @@ else:
         else:
             i = "0" + str(i)
         url = str(contents['Url']) + i + '.' + str(contents['suffix'])
-        num=cent**1
+        num = int(float(cent)/2)
         pre = '\r{}%:{}'.format(cent,'#'*num)
         print('{}:  {}正在准备中'.format(pre,i),end='',flush=True)
         with open('log.log','a') as log:
