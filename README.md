@@ -3,9 +3,10 @@
 
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ### 本程序自用+练练手（有问题在issues里问，能解答我就解答，毕竟我也是彩笔，一个actions弄了我老半天，绝了
-## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
-软件下载：
+目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包），如果要本地文件处理有点...麻烦，有一个思路是通过腾讯云的对象储存服务中转，直接用本地文件那报错的BASE64编码？的问题我没法解决（萌新啊囊哒哟！）
+
+### 软件下载：
 
 自动化编译结果：[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist) // [ubuntu](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist)
 
