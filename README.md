@@ -12,6 +12,8 @@ music.py是主程序，运行之后会产生3个文件：output.txt log.log erro
 
 error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中
 
+once.py是单个处理文件，用于单独处理
+
 ### 相关说明：
 SecretID/KEY可通过[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)获取，注意主账号需要开通[语音识别](https://console.cloud.tencent.com/asr)的功能
 
