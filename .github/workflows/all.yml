@@ -1,13 +1,20 @@
 name: ALL
 
 on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+#   watch:
+#     types: [started]
+  release:
+    types: [published]
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+    - 'v*'
   watch:
     types: [started]
-
+    
 jobs:
   build-ubuntu:
     runs-on: ubuntu-latest
