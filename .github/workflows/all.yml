@@ -69,6 +69,7 @@ jobs:
         pip install --upgrade tencentcloud-sdk-python
         pip install pypiwin32
         pip install pyinstaller
+        rm -r -Force dist
     - name: pyinstaller
       run: |
         pyinstaller -F -i ./favicon.ico music.py
