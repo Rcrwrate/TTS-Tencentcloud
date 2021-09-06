@@ -134,7 +134,7 @@ else:
                         recognition_text = resp.to_json_string()
                         log.write(recognition_text+"\n")
                         check = eval(recognition_text)['Data']['Status']
-                        if null >= 20:
+                        if null >= contents['error']:
                             with open('error.log','a') as errr:
                                 errr.write("ID:{}  TaskId:{}\n".format(i,TID))
                             print("\n error! ID:{}  TaskId:{} \n".format(i,TID))
