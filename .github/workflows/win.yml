@@ -40,9 +40,9 @@ jobs:
       run: |
         rm -r -Force __pycache__
         rm -r -Force build
-        rm -f music.spec
-        rm -f once.spec
-        rm -f error.spec
+        rm -Force music.spec
+        rm -Force once.spec
+        rm -Force error.spec
         git config --global user.email rurburner@gmail.com
         git config --global user.name Rcrwrate
         git add .
