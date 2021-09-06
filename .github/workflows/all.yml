@@ -55,8 +55,6 @@ jobs:
         git config --global user.name Rcrwrate
         git add .
         git commit -m "update new bulid" -a
-        git pull origin master
-        git push -u origin master
 
     - name: Push changes
       uses: ad-m/github-push-action@master
