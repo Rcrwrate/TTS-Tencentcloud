@@ -39,3 +39,4 @@ https://github.com/Rcrwrate/H/name_00001.wav.wav到https://github.com/Rcrwrate/H
     'end': 2345,
     'error':10,
     }`
+#更多说明请前往https://github.com/Rcrwrate/TTS-Tencentcloud/wiki
