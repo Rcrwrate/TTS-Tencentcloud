@@ -3,7 +3,11 @@
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
-软件下载：[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/releases) // [ubuntu](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist)
+软件下载：
+
+自动化编译结果：[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist) // [ubuntu](https://github.com/Rcrwrate/TTS-Tencentcloud/tree/main/dist)
+
+手动编译结果：[windows](https://github.com/Rcrwrate/TTS-Tencentcloud/releases)
 
 ### 程序说明：
 music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log
