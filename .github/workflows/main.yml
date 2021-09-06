@@ -46,9 +46,8 @@ jobs:
         rm -rf __pycache__
         rm -rf build
         rm -f music.spec
-        rm -f music.exe.spec
+        rm -f once.spec
         rm -f error.spec
-        rm -f error.exe.spec
         git config --global user.email rurburner@gmail.com
         git config --global user.name Rcrwrate
         git add .
