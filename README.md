@@ -1,5 +1,6 @@
 # tencentcloud-TTS
-## [![Python](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/main.yml/badge.svg)](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/main.yml)[项目开源地址](https://github.com/Rcrwrate/TTS-Tencentcloud/)
+## [![ALL](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml/badge.svg)](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml)[项目开源地址](https://github.com/Rcrwrate/TTS-Tencentcloud/)
+
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ## 目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）
 
