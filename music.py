@@ -97,7 +97,7 @@ else:
 
                     req = models.CreateRecTaskRequest()
                     params = {
-                        "EngineModelType": "16k_zh",
+                        "EngineModelType": contents["language"],
                         "ChannelNum": 1,
                         "ResTextFormat": 0,
                         "SourceType": 0,
