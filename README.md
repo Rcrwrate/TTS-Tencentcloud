@@ -32,6 +32,8 @@ start指文件名中数字变动区域的起驶数字，end反之
 
 error指单次查询能够容忍的错误上限
 
+language指当前语种，具体信息请前往[腾讯云文档](https://cloud.tencent.com/document/product/1093/37823#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0)查看
+
 ### 举例说明：
 https://github.com/Rcrwrate/H/name_00001.wav.wav到https://github.com/Rcrwrate/H/name_02345.wav.wav
 
