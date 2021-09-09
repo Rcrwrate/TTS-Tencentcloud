@@ -14,13 +14,14 @@ sample = "{" \
          "\n'start': 1," \
          "\n'end': 10000," \
          "\n'error': 10," \
+         "\n'language':'16k_zh'," \
          "\n}"
 try:
     with open("conf.txt") as conf:
         contents = conf.read()
         contents = eval(contents)
 except FileNotFoundError:
-    with open("conf.txt", 'a') as conf:
+    with open("conf.txt",'a') as conf:
         conf.write(str(sample))
     with open("readme.txt",'a') as conf:
         conf.write(str("目前，本程序仅支持URL方式批处理（很明显是为了游戏拆包）\n"
@@ -30,7 +31,8 @@ except FileNotFoundError:
                        "Url指基础除了数字变动区域以及后缀名以外的全部内容\n"
                        "suffix指代文件名后缀\n"
                        "start指文件名中数字变动区域的起驶数字end反之\n"
-                       "error指单次查询能够容忍的错误上限\n\n"
+                       "error指单次查询能够容忍的错误上限\n"
+                       "language指当前语种，具体信息请前往https://cloud.tencent.com/document/product/1093/37823#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0\n\n"
                        "程序说明：\n"
                        "music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log\n"
                        "第一个是输出，第二个是全过程（不完全），第三个是错误列表\n"
