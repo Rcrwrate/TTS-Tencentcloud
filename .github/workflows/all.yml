@@ -33,7 +33,7 @@ jobs:
         pip install pypiwin32
         pip install pyinstaller
         rm -r -Force dist
-        git config --global user.email rurburner@gmail.com
+        git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
         git config --global user.name Rcrwrate
         git pull origin main
     - name: pyinstaller
@@ -52,7 +52,7 @@ jobs:
         rm -Force music.spec
         rm -Force once.spec
         rm -Force error.spec
-        git config --global user.email rurburner@gmail.com
+        git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
         git config --global user.name Rcrwrate
         git add .
         git commit -m "update new bulid" -a
