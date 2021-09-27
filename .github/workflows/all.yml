@@ -100,6 +100,7 @@ jobs:
         rm -f music.spec
         rm -f once.spec
         rm -f error.spec
+        mv dist/ ubtuntu/
         git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
         git config --global user.name Rcrwrate
         git add .
