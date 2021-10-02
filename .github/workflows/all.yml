@@ -38,9 +38,7 @@ jobs:
         git pull origin main
     - name: pyinstaller
       run: |
-        pyinstaller -F -i ./favicon.ico music.py
-        pyinstaller -F -i ./favicon.ico error.py
-        pyinstaller -F -i ./favicon.ico once.py
+        pyinstaller -F -i ./favicon.ico run.py
         
 #    - name: Commit and push
 #      run: bash reset.sh "update app config"
@@ -49,9 +47,7 @@ jobs:
       run: |
         rm -r -Force __pycache__
         rm -r -Force build
-        rm -Force music.spec
-        rm -Force once.spec
-        rm -Force error.spec
+        rm -Force run.spec
         git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
         git config --global user.name Rcrwrate
         git add .
@@ -90,19 +86,13 @@ jobs:
         pip install pyinstaller
     - name: pyinstaller
       run: |
-        rm -f dist/music.exe
-        rm -f dist/error.exe
-        rm -f dist/once.exe
-        pyinstaller -F -i=favicon.ico music.py -n=music
-        pyinstaller -F -i=favicon.ico error.py -n=error
-        pyinstaller -F -i=favicon.ico once.py -n=once
+        rm -f dist/run.exe
+        pyinstaller -F -i=favicon.ico run.py
     - name: Commit #上传新的refresh_token到仓库
       run: |
         rm -rf __pycache__
         rm -rf build
-        rm -f music.spec
-        rm -f once.spec
-        rm -f error.spec
+        rm -f run.spec
         mv dist/ ubtuntu/
         git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
         git config --global user.name Rcrwrate
