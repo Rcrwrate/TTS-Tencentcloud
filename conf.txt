@@ -1,0 +1,10 @@
+{
+'SecretId': 'ÄúµÄID',
+'SecretKey': 'ÄúµÄKey',
+'Url': 'https://console.cloud.tencent.com/asr/',
+'suffix': 'wav.wav',
+'start': 1,
+'end': 10000,
+'error': 10,
+'language':'16k_zh',
+}
