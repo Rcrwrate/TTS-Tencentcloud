@@ -1,4 +1,4 @@
-name: Python
+name: build_ubtuntu
 
 on:
   push:
@@ -7,10 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-ubuntu:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -36,6 +35,7 @@ jobs:
       run: |
         pyinstaller -F -i=favicon.ico music.py -n=music
         pyinstaller -F -i=favicon.ico error.py -n=error
+        pyinstaller -F -i=favicon.ico once.py -n=once
         
 #    - name: Commit and push
 #      run: bash reset.sh "update app config"
@@ -45,9 +45,8 @@ jobs:
         rm -rf __pycache__
         rm -rf build
         rm -f music.spec
-        rm -f music.exe.spec
+        rm -f once.spec
         rm -f error.spec
-        rm -f error.exe.spec
         git config --global user.email rurburner@gmail.com
         git config --global user.name Rcrwrate
         git add .
@@ -56,4 +55,3 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-

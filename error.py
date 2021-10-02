@@ -14,6 +14,7 @@ sample = "{" \
          "\n'start': 1," \
          "\n'end': 10000," \
          "\n'error': 10," \
+         "\n'language':'16k_zh'," \
          "\n}"
 try:
     with open("conf.txt") as conf:
@@ -30,7 +31,13 @@ except FileNotFoundError:
                        "Url指基础除了数字变动区域以及后缀名以外的全部内容\n"
                        "suffix指代文件名后缀\n"
                        "start指文件名中数字变动区域的起驶数字end反之\n"
-                       "error指单次查询能够容忍的错误上限\n\n"
+                       "error指单次查询能够容忍的错误上限\n"
+                       "language指当前语种，具体信息请前往https://cloud.tencent.com/document/product/1093/37823#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0\n\n"
+                       "程序说明：\n"
+                       "music.py是主程序，运行之后会产生3个文件：output.txt log.log error.log\n"
+                       "第一个是输出，第二个是全过程（不完全），第三个是错误列表\n"
+                       "error.py是错误处理文件，目前需要您手动输入错误列表中的taskid获取结果，再将结果复制到output.txt中\n"
+                       "once.py是单个处理文件，用于单独处理\n\n"
                        "举例说明：\n"
                        "https://github.com/Rcrwrate/H/name_00001.wav.wav到https://github.com/Rcrwrate/H/name_02345.wav.wav\n"
                        "这是我的音频文件（已经上传到公网能够访问的地方）\n"
@@ -43,10 +50,13 @@ except FileNotFoundError:
                        "\t'start': 1,\n"
                        "\t'end': 2345,\n"
                        "\t'error':10,\n"
-                       "}\n"))
+                       "}\n\n"
+                       "更多说明请前往https://github.com/Rcrwrate/TTS-Tencentcloud/wiki\n"))
     print("文件conf.txt不存在,已自动生成模板文件，请按照标准填写完成后再次运行本程序")
     print("请仔细阅读说明文档：readme.txt")
     input("按回车键退出")
+except SyntaxError:
+    input("conf.txt文件异常，删除或者修正\n按回车键退出")
 else:
     TID = 1
     null = 0
