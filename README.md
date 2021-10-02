@@ -1,6 +1,8 @@
 # tencentcloud-TTS
 ## [![ALL](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml/badge.svg)](https://github.com/Rcrwrate/TTS-Tencentcloud/actions/workflows/all.yml)
 
+### 到目前为止，这个突发奇想的小练笔也算是彻底完成了，耗时总计约30h左右
+
 ### 编程拉跨，能运行就算成功，重构代码，那是啥，我不知道，我什么都不知道
 ### 本程序自用+练练手（有问题在issues里问，能解答我就解答，毕竟我也是彩笔，一个actions弄了我老半天，绝了
 
