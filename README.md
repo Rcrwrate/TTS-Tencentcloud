@@ -3,7 +3,7 @@
 
 目前存在一个已知bug，待修，
 
-[TO-DO列表](https://github.com/Rcrwrate/TTS-Tencentcloud/projects/1)
+[TO-DO列表](https://github.com/Rcrwrate/TTS-Tencentcloud/projects/1?fullscreen=true)
 
 ### 到目前为止，这个突发奇想的小练笔也算是彻底完成了，耗时总计约30h左右，以下为旧版说明
 
