@@ -36,14 +36,20 @@ class Core:
         null = 0
 
     def change_info(self, contents):
-        self.SecretId = contents["SecretId"]
-        self.SecretKey = contents["SecretKey"]
-        self.Url = contents["Url"]
-        self.suffix = contents["suffix"]
-        self.start = contents["start"]
-        self.end = contents["end"]
-        self.error = contents["error"]
-        self.language = contents["language"]
+        try:
+            self.SecretId = contents["SecretId"]
+            self.SecretKey = contents["SecretKey"]
+            self.Url = contents["Url"]
+            self.suffix = contents["suffix"]
+            self.start = contents["start"]
+            self.end = contents["end"]
+            self.error = contents["error"]
+            self.language = contents["language"]
+        except Exception as e:
+            print("conf.txt文件书写错误")
+            self.log(item=e,type="str")
+            import sys
+            sys.exit(-1)
 
 
     def debug(self):
@@ -75,6 +81,10 @@ class Core:
         elif type == "error":
             with open("error.log", "a") as error:
                 error.write("=" * 16 + str(self.id) + "=" * 16 + "\n")
+                error.write(str(item)+"\n")
+        elif type == "str":
+            with open("log.log", "a") as error:
+                error.write("=" * 16 + "内部错误" + "=" * 16 + "\n")
                 error.write(str(item)+"\n")
         
     def error_check(self):
