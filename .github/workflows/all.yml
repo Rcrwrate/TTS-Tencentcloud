@@ -91,6 +91,7 @@ jobs:
       run: |
         rm -rf __pycache__
         rm -rf build
+        rm -rf ubtuntu
         rm -f run.spec
         mv dist/ ubtuntu/
         git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
