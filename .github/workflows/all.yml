@@ -54,7 +54,7 @@ jobs:
         git remote rm origin
         git remote add origin https://github.com/Rcrwrate/TTS-Tencentcloud.git
         git pull origin main
-        git push --force --quiet -u origin main
+        git push --force --quiet "https://${TOKEN}@${REF}" master:main
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
@@ -101,7 +101,7 @@ jobs:
         git remote rm origin
         git remote add origin https://github.com/Rcrwrate/TTS-Tencentcloud.git
         git pull origin main
-        git push --force --quiet -u origin main
+        git push --force --quiet "https://${TOKEN}@${REF}" master:main
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
