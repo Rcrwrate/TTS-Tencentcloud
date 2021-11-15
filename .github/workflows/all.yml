@@ -88,19 +88,24 @@ jobs:
         rm -f dist/run.exe
         pyinstaller -F -i=favicon.ico run.py
     - name: Commit #上传新的refresh_token到仓库
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+        REF: github.com/${{github.repository}}
+        MYEMAIL: 46920034+Rcrwrate@users.noreply.github.com                 # ！！记得修改为自己邮箱
+        MYNAME: ${{github.repository_owner}} 
       run: |
         rm -rf __pycache__
         rm -rf build
         rm -rf ubtuntu
         rm -f run.spec
         mv dist/ ubtuntu/
-        git config --global user.email 46920034+Rcrwrate@users.noreply.github.com
-        git config --global user.name Rcrwrate
-        git add .
-        git commit -m "update new bulid" -a
-        git remote rm origin
-        git remote add origin https://github.com/Rcrwrate/TTS-Tencentcloud.git
-        git pull origin main
+        git config --global user.email "${MYEMAIL}"
+        git config --global user.name "${MYNAME}"
+        git init
+        git remote add origin https://${REF}
+        git add . 
+        git commit -m "Updated By Github Actions With Build ${{github.run_number}} of ${{github.workflow}} For Github Packets"
+        git branch -M master
         git push --force --quiet "https://${TOKEN}@${REF}" master:main
     - name: Push changes
       uses: ad-m/github-push-action@master
