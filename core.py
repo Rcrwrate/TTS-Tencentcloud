@@ -7,7 +7,15 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import (
 )
 from tencentcloud.asr.v20190614 import asr_client, models
 import time
+import sys
 
+def get(prompt, default=None):
+    while True:
+        ret = input(prompt)
+        if ret != '':
+            return ret
+        elif default is not None:
+            return default
 
 class Core:
     def __init__(
@@ -47,10 +55,26 @@ class Core:
             self.language = contents["language"]
         except Exception as e:
             print("conf.txt文件书写错误")
-            self.log(item=e,type="str")
-            import sys
-            sys.exit(-1)
+            self.log(item=e, type="str")
+            if self.choose("是否需要自动修复工具[y/n(强制继续)/q(退出程序)]："):
+                self.fix_conf(contents)
+            # import sys
+            # sys.exit(-1)
 
+    def fix_conf(self, contents):
+        for key in ["SecretId", "SecretKey", "Url", "suffix", "start", "end", "error", "language"]:
+            if contents.__contains__(key):
+                continue
+            else:
+                if key in ["start", "end", "error"]:
+                    contents[key] = 0
+                else:
+                    contents[key] = "已修复，请稍后手动填入内容"
+        item = "{\n'SecretId':'" + str(contents["SecretId"]) +"',\n'SecretKey':'" + str(contents["SecretKey"]) +"',\n'Url':'" + str(contents["Url"]) +"',\n'suffix':'" + str(contents["suffix"]) +"',\n'start':" + str(contents["start"]) +",\n'end':" + str(contents["end"]) +",\n'error':" + str(contents["error"]) +",\n'language':'" + str(contents["language"]) +"',\n}"
+        self.change_info(contents)
+        with open("conf.txt","w") as f:
+            f.write(item)
+        print("修复完成")
 
     def debug(self):
         print(
@@ -66,8 +90,21 @@ class Core:
             "\nid:\t\t" + str(self.id) + "\n" + "="*42 + "\n"
         )
 
-    def log(self, item, type="log"):#日志输出
-        if type == "log": #懒得改了，就这样吧
+    def choose(self,msg):
+        import re
+        print(msg)
+        while True:
+            inputs = re.split('\\s+', get('>').strip())
+            if inputs[0].startswith('y'):
+                return True
+            elif inputs[0].startswith('q'):
+                sys.exit()
+            else:
+                return False
+
+
+    def log(self, item, type="log"):  # 日志输出
+        if type == "log":  # 懒得改了，就这样吧
             with open("log.log", "a") as log:
                 log.write("=" * 16 + str(self.id) + "=" * 16 + "\n")
                 log.write(str(item) + "\n")
@@ -83,10 +120,10 @@ class Core:
                 error.write("=" * 16 + str(self.id) + "=" * 16 + "\n")
                 error.write(str(item)+"\n")
         elif type == "str":
-            with open("log.log", "a") as error:
+            with open("error.log", "a") as error:
                 error.write("=" * 16 + "内部错误" + "=" * 16 + "\n")
                 error.write(str(item)+"\n")
-        
+
     def error_check(self):
         if self.error_count >= self.error:
             import sys
@@ -94,7 +131,7 @@ class Core:
             input("输入回车退出程序:")
             sys.exit(1)
 
-    def once_input(self,url=""):#单次查询请求模块
+    def once_input(self, url=""):  # 单次查询请求模块
         self.error_check()
         if url == "":
             url = str(self.Url) + str(self.id) + '.' + str(self.suffix)
@@ -121,21 +158,22 @@ class Core:
 
             resp = client.CreateRecTask(req)
             # print(resp.to_json_string())
-            print('{}已提交            '.format(self.temp),end='',flush=True)
+            print('{}已提交            '.format(self.temp), end='', flush=True)
         except TencentCloudSDKException as err:
-            self.log(item=err,type="error")
+            self.log(item=err, type="error")
             print("\n" + str(err) + "\n")
             self.error_count += 1
         else:
             strs = resp.to_json_string()
-            self.log(item=strs,type="log")
+            self.log(item=strs, type="log")
             TID = eval(strs)['Data']['TaskId']
-            self.log(item=TID,type="temp")
+            self.log(item=TID, type="temp")
             return TID
 
-    def mult_input_id(self):#核心批量生成请求模块
+    def mult_input_id(self):  # 核心批量生成请求模块
         for i in range(self.start, self.end+1):
-            cent = int((float(i) - float(self.start) + 1) / (float(self.end) - float(self.start)) * 100 )
+            cent = int((float(i) - float(self.start) + 1) /
+                       (float(self.end) - float(self.start)) * 100)
             if i < 10:
                 i = "0000" + str(i)
             elif 10 <= i and i < 100:
@@ -146,12 +184,12 @@ class Core:
                 i = "0" + str(i)
             self.id = i
             num = int(float(cent)/2)
-            pre = '\r{}%:{}'.format(cent,'#'*num)
-            self.temp = '{}:  {}'.format(pre,i)
-            print('{}正在准备中'.format(self.temp),end='',flush=True)
+            pre = '\r{}%:{}'.format(cent, '#'*num)
+            self.temp = '{}:  {}'.format(pre, i)
+            print('{}正在准备中'.format(self.temp), end='', flush=True)
             self.once_input()
 
-    def once_output(self,strtid=":",TID=0):
+    def once_output(self, strtid=":", TID=0):
         if TID == 0:
             Temp = strtid.split(":")
             self.id = Temp[0]
@@ -181,32 +219,36 @@ class Core:
                 resp = client.DescribeTaskStatus(req)
                 # print(resp.to_json_string())
                 recognition_text = resp.to_json_string()
-                self.log(item=recognition_text,type="log")
+                self.log(item=recognition_text, type="log")
                 Status = eval(recognition_text)['Data']['Status']
                 if check >= self.error:
-                    self.log(item="ID:{}  TaskId:{}\n".format(self.id,TID),type="error")
-                    print("\n error! ID:{}  TaskId:{} \n".format(self.id,TID))
+                    self.log(item="ID:{}  TaskId:{}\n".format(
+                        self.id, TID), type="error")
+                    print("\n error! ID:{}  TaskId:{} \n".format(self.id, TID))
                     break
                 if str(Status) == "3":
-                    self.log(item="ID:{}  TaskId:{}\n".format(self.id,TID),type="error")
-                    print("\n error! ID:{}  TaskId:{}  系统无法转义 \n".format(self.id,TID))
+                    self.log(item="ID:{}  TaskId:{}\n".format(
+                        self.id, TID), type="error")
+                    print("\n error! ID:{}  TaskId:{}  系统无法转义 \n".format(
+                        self.id, TID))
                     break
                 if str(Status) == "2":
                     message = eval(recognition_text)['Data']['Result']
-                    self.log(item=message,type="out")
+                    self.log(item=message, type="out")
                     return message
             except TencentCloudSDKException as err:
-                self.log(item=err,type="error")
+                self.log(item=err, type="error")
                 print(err)
             except Exception as err:
-                self.log(item=err,type="error")
+                self.log(item=err, type="error")
                 print(err)
             time.sleep(2)
 
     def mult_output_str(self):
-        with open("temp.log","r") as fn:
+        with open("temp.log", "r") as fn:
             for lines in fn.readlines():
                 self.once_output(strtid=lines)
+
 
 if __name__ == "__main__":
     from conf import conf
@@ -220,7 +262,7 @@ if __name__ == "__main__":
     # Core.once_output(self=test,strtid="00007:1483001931")
     # Core.mult_output_str(self=test)
 
-    #独立URL测试
-    url= "http://ys-o.ys168.com/617723448/615738753/u562267437JPHIhVRtk8c9/Cv_Partner_00762.wav.wav"
-    TID = Core.once_input(self=test,url=url)
-    print(Core.once_output(self=test,TID=TID))
+    # 独立URL测试
+    url = "http://ys-o.ys168.com/617723448/615738753/u562267437JPHIhVRtk8c9/Cv_Partner_00762.wav.wav"
+    TID = Core.once_input(self=test, url=url)
+    print(Core.once_output(self=test, TID=TID))

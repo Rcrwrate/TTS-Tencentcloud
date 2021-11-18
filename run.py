@@ -1,16 +1,14 @@
-from core import Core
-from msg import msg,console
+from core import Core, get
+from msg import msg, console
 from conf import conf
-from other import delete_all,delete
-import sys,re
+from other import delete_all, delete
+import sys
+import re
 
-def get(prompt, default=None):
-    while True:
-        ret = input(prompt)
-        if ret != '':
-            return ret
-        elif default is not None:
-            return default
+
+def main():
+    return 0
+
 
 conf = conf()
 test = Core()
@@ -41,12 +39,15 @@ while True:
             test.once_output(TID=TID)
         test.id = 0
     elif inputs[0].startswith('u'):
-        url= inputs[1]
-        TID = Core.once_input(self=test,url=url)
+        url = inputs[1]
+        TID = Core.once_input(self=test, url=url)
         print("\n")
-        print(Core.once_output(self=test,TID=TID))
+        print(Core.once_output(self=test, TID=TID))
 
     elif inputs[0].startswith('d'):
         delete_all()
         print("已删除所有临时文件")
     inputs = re.split('\\s+', get('>').strip())
+
+if __name__ == "__main__":
+    main()
